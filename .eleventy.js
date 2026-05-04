@@ -15,3 +15,7 @@ return {
     }
   };
 };
+
+eleventyConfig.addCollection("leadership", function(collectionApi) {
+  return collectionApi.getFilteredByGlob("content/leadership/*.md");
+});
