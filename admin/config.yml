@@ -1,7 +1,7 @@
 backend:
-  name: test-repo
-
-local_backend: true
+  name: github
+  repo: https://rra-website.pages.dev/
+  branch: main
 
 media_folder: "uploads"
 public_folder: "/uploads"
