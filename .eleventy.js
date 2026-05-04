@@ -3,11 +3,15 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("uploads");
 
-eleventyConfig.addCollection("stories", function(collectionApi) {
-  return collectionApi.getFilteredByGlob("content/stories/*.md");
-});
-  
-return {
+  eleventyConfig.addCollection("stories", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("content/stories/*.md");
+  });
+
+  eleventyConfig.addCollection("leadership", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("content/leadership/*.md");
+  });
+
+  return {
     dir: {
       input: "src",
       includes: "_includes",
@@ -15,7 +19,3 @@ return {
     }
   };
 };
-
-eleventyConfig.addCollection("leadership", function(collectionApi) {
-  return collectionApi.getFilteredByGlob("content/leadership/*.md");
-});
