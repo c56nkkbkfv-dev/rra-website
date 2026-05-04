@@ -1,1 +1,16 @@
+---
+title: Leadership
+layout: layout.njk
+---
 
+<h1>Leadership</h1>
+
+<ul>
+  {% for member in collections.leadership %}
+    <li>
+      <h2>{{ member.data.name }}</h2>
+      <p>{{ member.data.title }}</p>
+      <div>{{ member.templateContent | safe }}</div>
+    </li>
+  {% endfor %}
+</ul>
