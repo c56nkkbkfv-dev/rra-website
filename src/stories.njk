@@ -1,0 +1,15 @@
+---
+title: Stories
+layout: layout.njk
+---
+
+<h1>Stories</h1>
+
+<ul>
+  {% for story in collections.stories %}
+    <li>
+      <h2>{{ story.data.title }}</h2>
+      <p>{{ story.data.summary }}</p>
+    </li>
+  {% endfor %}
+</ul>
