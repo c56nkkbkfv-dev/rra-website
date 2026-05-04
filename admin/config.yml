@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: https://rra-website.pages.dev/
+  repo: c56nkkbkfv-dev/rra-website
   branch: main
 
 media_folder: "uploads"
