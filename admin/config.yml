@@ -17,3 +17,14 @@ collections:
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Summary", name: "summary", widget: "text" }
       - { label: "Body", name: "body", widget: "markdown" }
+
+        - name: "leadership"
+    label: "Leadership"
+    folder: "content/leadership"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Photo", name: "photo", widget: "image", required: false }
+      - { label: "Bio", name: "body", widget: "markdown" }
