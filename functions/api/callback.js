@@ -24,8 +24,16 @@ export async function onRequestGet(context) {
   const data = await tokenResponse.json();
 
   if (!data.access_token) {
-    return new Response("OAuth failed", { status: 500 });
-  }
+  return new Response(
+    JSON.stringify(data, null, 2),
+    {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+  );
+}
 
   return new Response(`
     <script>
