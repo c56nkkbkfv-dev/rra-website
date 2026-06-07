@@ -52,40 +52,37 @@ export async function onRequestGet(context) {
     token: data.access_token
   });
 
-  return new Response(
-    `<!DOCTYPE html>
-    <html>
-    <head>
-      <title>Authentication Complete</title>
-    </head>
-    <body>
-      <script>
-        (function() {
-          function sendToken() {
-            if (window.opener) {
-              window.opener.postMessage(
-                "authorization:github:success:${tokenPayload}",
-                window.location.origin
-              );
+ return new Response(
+`<!DOCTYPE html>
+<html>
+<body>
+<h2>OAuth Debug</h2>
 
-              setTimeout(function() {
-                window.close();
-              }, 500);
-            } else {
-              document.body.innerHTML =
-                "<h2>Authentication successful</h2><p>You can close this window.</p>";
-            }
-          }
+<script>
+try {
+  document.body.innerHTML += "<p>Window opener exists: " + (!!window.opener) + "</p>";
 
-          sendToken();
-        })();
-      </script>
-    </body>
-    </html>`,
-    {
-      headers: {
-        "Content-Type": "text/html"
-      }
-    }
-  );
+  const payload = "authorization:github:success:${tokenPayload}";
+
+  document.body.innerHTML += "<p>Sending message...</p>";
+
+  if (window.opener) {
+    window.opener.postMessage(payload, "*");
+    document.body.innerHTML += "<p>Message sent.</p>";
+  }
+
+  document.body.innerHTML += "<p>Done.</p>";
+
+} catch(err) {
+  document.body.innerHTML += "<pre>" + err.message + "</pre>";
 }
+</script>
+
+</body>
+</html>`,
+{
+  headers: {
+    "Content-Type": "text/html"
+  }
+}
+);
